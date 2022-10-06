@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import "./Search.css";
 import { DateRangePicker } from "react-date-range";
 import "react-date-range/dist/styles.css";
@@ -20,7 +21,7 @@ function Search() {
         setStartDate(ranges.selection.startDate);
         setEndDate(ranges.selection.endDate);
     }
-
+    const history = useHistory();
     return (
         <div className='search'>
             <DateRangePicker
@@ -32,7 +33,9 @@ function Search() {
                 <PersonIcon />
             </h2>
             <input min={0} defaultValue={2} type='number' />
-            <Button>Search Airbnb</Button>
+            <Button onClick={() => history.push("/search")}>
+                Search Airbnb
+            </Button>
         </div>
     );
 }
